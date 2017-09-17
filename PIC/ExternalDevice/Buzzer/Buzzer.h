@@ -1,0 +1,58 @@
+/* Microchip Technology Inc. and its subsidiaries.  You may use this software 
+ * and any derivatives exclusively with Microchip products. 
+ * 
+ * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS".  NO WARRANTIES, WHETHER 
+ * EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY IMPLIED 
+ * WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS FOR A 
+ * PARTICULAR PURPOSE, OR ITS INTERACTION WITH MICROCHIP PRODUCTS, COMBINATION 
+ * WITH ANY OTHER PRODUCTS, OR USE IN ANY APPLICATION. 
+ *
+ * IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
+ * INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
+ * WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS 
+ * BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE.  TO THE 
+ * FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS 
+ * IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF 
+ * ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+ *
+ * MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE 
+ * TERMS. 
+ */
+
+/* 
+ * File:   
+ * Author: 
+ * Comments:
+ * Revision history: 
+ */
+/*
+ *This Library can use only PIC16F1827 family
+ */
+#ifndef BUZZER_H
+#define	BUZZER_H
+
+#include "main.h"
+
+#define BUZZER_PR2 0xFF
+    
+#define Buzzer_Sound() Buzzer_SetDuty(0x01FF)
+#define Buzzer_Silent() Buzzer_SetDuty(0x0000)
+    
+typedef enum
+{
+    TMR2_PRESCALER1 = 0,
+    TMR2_PRESCALER4 = 1,
+    TMR2_PRESCALER16 = 2,
+    TMR2_PRESCALER64 = 3,
+}TMR2_PRESCALER_VAL;
+
+typedef void (*Buzzer_Init_PORTTypedef)(void);
+
+void Buzzer_Init(Buzzer_Init_PORTTypedef Buzzer_Init_PORT,TMR2_PRESCALER_VAL pre_val,uint8_t period);
+void Buzzer_SetDuty(uint16_t duty);
+void Buzzer_Sound_ms(uint16_t time);
+void Buzzer_Count1ms(void);//Set Function Repeat for 1 mili second
+
+
+#endif	/* BUZZER_H */
+
