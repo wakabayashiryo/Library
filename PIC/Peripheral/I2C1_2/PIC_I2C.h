@@ -4,22 +4,15 @@
  *
  * Created on 2017/03/5, 14:24
  */
-/*
- *This Library can use only PIC16F1827 family
- */
+ 
 #ifndef PIC_I2C_H
 #define	PIC_I2C_H
 
 #include "main.h"
 
-/*TODO
- * test i2C2
- * copy i2c1
- * test all function
- */
 
 #define I2C1_DONOT_USE 0
-#define I2C2_DONOT_USE 0
+#define I2C2_DONOT_USE 1
 
 #define SLAVE_RECEIVE_MAX 8
 
