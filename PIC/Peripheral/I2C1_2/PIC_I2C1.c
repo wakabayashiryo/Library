@@ -6,9 +6,9 @@
 
 extern I2Cx_Configuration I2C1_Config;
 
-void I2C1_Init(I2C1_Init_PORTTypedef I2C1_Init_PORT,uint8_t address,I2Cx_Mode mode,I2Cx_Speed Speed);
+void I2C1_Init(I2C1_Init_PORTTypedef I2C1_Init_PORT,uint8_t address,I2Cx_Mode mode,I2Cx_Speed Speed)
 {
-    I2C1_Init_PORT();                         //Intialize Port for I2C
+    I2C1_Init_PORT();                       //Intialize Port for I2C
     I2C1_Config.Mode = mode;                //Save I2C1 mode
 
     switch(mode)
