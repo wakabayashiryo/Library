@@ -1,6 +1,6 @@
 #include "PIC_Timer6.h"
 
-void Timer6_Init(TMM6_PRESCALER_VAL pre_val,uint8_t period)
+void Timer6_Init(TMR6_PRESCALER_VAL pre_val,uint8_t period)
 {
     PR6 = period;       //set Period Register
     TMR6 = 0x00;        //Clear 
