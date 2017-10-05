@@ -10,7 +10,7 @@ exp):UART_Get_Status(uin16t_t channenl);
 
 -----
 
-- ## Functions are Arranged sequence   
+- ## Other Functions
 
     1. **Module Initialize**   
     ***&lt;ModuleName&gt;&#095;Init(Module_Init_PORTTypedef port,Arguments...);***   
