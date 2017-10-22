@@ -13,7 +13,6 @@ extern "C" {
 #endif
 
 #include "main.h"
-#include "font.h"
     
 // Interface with the ST7735 1.8" SPI LCD Module
 // Code adapted from https://github.com/adafruit/Adafruit-ST7735-Library
@@ -31,8 +30,8 @@ extern void (*SPI_ByteTransmit)(uint8_t);
 
 #define swap(a, b) { int16_t t = a; a = b; b = t; }
 
-#define SCREEN_WIDTH    128
-#define SCREEN_HEIGHT   160
+#define ST7735_PIXELWIDTH    128
+#define ST7735_PIXELHEIGHT   160
 
 #define ST7735_NOP      0x0
 #define ST7735_SWRESET  0x01
@@ -54,8 +53,15 @@ extern void (*SPI_ByteTransmit)(uint8_t);
 #define ST7735_RAMRD    0x2E
 
 #define ST7735_COLMOD   0x3A
-#define ST7735_MADCTL   0x36
 
+#define ST7735_MADCTL   0x36
+#define MADCTL_MY       0x80
+#define MADCTL_MX       0x40
+#define MADCTL_MV       0x20
+#define MADCTL_ML       0x10
+#define MADCTL_RGB      0x00
+#define MADCTL_BGR      0x08
+#define MADCTL_MH       0x04
 
 #define ST7735_FRMCTR1  0xB1
 #define ST7735_FRMCTR2  0xB2
@@ -90,27 +96,125 @@ extern void (*SPI_ByteTransmit)(uint8_t);
 #define   ST7735_YELLOW  0xFFE0
 #define   ST7735_WHITE   0xFFFF
 
-void ST7735_initB(void(*func)(uint8_t)); 
-void ST7735_initR(void(*func)(uint8_t));// initialize a ST7735 chipvoid setAddrWindow(uint8_t  x0, uint8_t  y0, uint8_t  x1, uint8_t  y1);
+// some flags for ST7735_InitR()
+enum initRFlags{
+  none,
+  INITR_GREENTAB,
+  INITR_REDTAB,
+  INITR_BLACKTAB
+};
+//------------ST7735_InitB------------
+// Initialization for ST7735B screens.
+// Input: none
+// Output: none
+void ST7735_InitB(void(*func)(uint8_t));
 
-void ST7735_pushColor(uint16_t  color); // for what?
-void ST7735_drawPixel(uint8_t  x, uint8_t  y, uint16_t  color);
-void ST7735_fillScreen(uint16_t  color);
 
-void ST7735_drawString(uint8_t  x, uint8_t  y, int8_t *c, uint16_t  color, uint8_t  size);
-void ST7735_drawChar(uint8_t  x, uint8_t  y, int8_t c, uint16_t  color, uint8_t  size);
+//------------ST7735_InitR------------
+// Initialization for ST7735R screens (green or red tabs).
+// Input: option one of the enumerated options depending on tabs
+// Output: none
+void ST7735_InitR(void(*func)(uint8_t),enum initRFlags option);
 
-void ST7735_fillCircle(uint8_t  x0, uint8_t  y0, uint8_t  r, uint16_t  color);
-void ST7735_setRotation(uint8_t  m);
-void ST7735_fillRect(uint8_t  x, uint8_t  y, uint8_t  w, uint8_t  h, uint16_t  color);
-void ST7735_drawCircle(uint8_t  x0, uint8_t  y0, uint8_t  r, uint16_t  color);
-void ST7735_drawRect(uint8_t  x, uint8_t  y, uint8_t  w, uint8_t  h, uint16_t  color);
-void ST7735_drawVerticalLine(uint8_t  x, uint8_t  y, uint8_t  length, uint16_t  color);
-void ST7735_drawHorizontalLine(uint8_t  x, uint8_t  y, uint8_t  length, uint16_t  color);
-void ST7735_drawFastLine(uint8_t  x, uint8_t  y, uint8_t  length, uint16_t  color, uint8_t  rotflag);
-void ST7735_drawLine(int16_t x0, int16_t y0, int16_t x1, int16_t y1, uint16_t  color);
-uint8_t  ST7735_getRotation();
 
+//------------ST7735_DrawPixel------------
+// Color the pixel at the given coordinates with the given color.
+// Requires 13 bytes of transmission
+// Input: x     horizontal position of the pixel, columns from the left edge
+//               must be less than 128
+//               0 is on the left, 126 is near the right
+//        y     vertical position of the pixel, rows from the top edge
+//               must be less than 160
+//               159 is near the wires, 0 is the side opposite the wires
+//        color 16-bit color, which can be produced by ST7735_Color565()
+// Output: none
+void ST7735_DrawPixel(int16_t x, int16_t y, uint16_t color);
+
+//------------ST7735_DrawFastVLine------------
+// Draw a vertical line at the given coordinates with the given height and color.
+// A vertical line is parallel to the longer side of the rectangular display
+// Requires (11 + 2*h) bytes of transmission (assuming image fully on screen)
+// Input: x     horizontal position of the start of the line, columns from the left edge
+//        y     vertical position of the start of the line, rows from the top edge
+//        h     vertical height of the line
+//        color 16-bit color, which can be produced by ST7735_Color565()
+// Output: none
+void ST7735_DrawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color);
+
+
+//------------ST7735_DrawFastHLine------------
+// Draw a horizontal line at the given coordinates with the given width and color.
+// A horizontal line is parallel to the shorter side of the rectangular display
+// Requires (11 + 2*w) bytes of transmission (assuming image fully on screen)
+// Input: x     horizontal position of the start of the line, columns from the left edge
+//        y     vertical position of the start of the line, rows from the top edge
+//        w     horizontal width of the line
+//        color 16-bit color, which can be produced by ST7735_Color565()
+// Output: none
+void ST7735_DrawFastHLine(int16_t x, int16_t y, int16_t w, uint16_t color);
+
+
+//------------ST7735_FillScreen------------
+// Fill the screen with the given color.
+// Requires 40,971 bytes of transmission
+// Input: color 16-bit color, which can be produced by ST7735_Color565()
+// Output: none
+void ST7735_FillScreen(uint16_t color);
+
+
+//------------ST7735_FillRect------------
+// Draw a filled rectangle at the given coordinates with the given width, height, and color.
+// Requires (11 + 2*w*h) bytes of transmission (assuming image fully on screen)
+// Input: x     horizontal position of the top left corner of the rectangle, columns from the left edge
+//        y     vertical position of the top left corner of the rectangle, rows from the top edge
+//        w     horizontal width of the rectangle
+//        h     vertical height of the rectangle
+//        color 16-bit color, which can be produced by ST7735_Color565()
+// Output: none
+void ST7735_FillRect(int16_t x, int16_t y, int16_t w, int16_t h, uint16_t color);
+
+
+//------------ST7735_Color565------------
+// Pass 8-bit (each) R,G,B and get back 16-bit packed color.
+// Input: r red value
+//        g green value
+//        b blue value
+// Output: 16-bit color
+uint16_t ST7735_Color565(uint8_t r, uint8_t g, uint8_t b);
+
+//------------ST7735_SwapColor------------
+// Swaps the red and blue values of the given 16-bit packed color;
+// green is unchanged.
+// Input: x 16-bit color in format B, G, R
+// Output: 16-bit color in format R, G, B
+uint16_t ST7735_SwapColor(uint16_t x) ;
+
+//------------ST7735_DrawString------------
+// String draw function.  
+// 16 rows (0 to 15) and 21 characters (0 to 20)
+// Requires (11 + size*size*6*8) bytes of transmission for each character
+// Input: x         columns from the left edge (0 to 20)
+//        y         rows from the top edge (0 to 15)
+//        pt        pointer to a null terminated string to be printed
+//        textColor 16-bit color of the characters
+// bgColor is Black and size is 1
+// Output: number of characters printed
+void ST7735_DrawString(uint8_t  x, uint8_t  y, int8_t  *c, uint16_t  color, uint8_t  size);
+
+//------------ST7735_SetRotation------------
+// Change the image rotation.
+// Requires 2 bytes of transmission
+// Input: m new rotation value (0 to 3)
+// Output: none
+void ST7735_SetRotation(uint8_t m) ;
+
+
+//------------ST7735_InvertDisplay------------
+// Send the command to invert all of the colors.
+// Requires 1 byte of transmission
+// Input: i 0 to disable inversion; non-zero to enable inversion
+// Output: none
+void ST7735_InvertDisplay(int i) ;
 
 #ifdef	__cplusplus
 }
