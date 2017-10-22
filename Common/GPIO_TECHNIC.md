@@ -5,26 +5,27 @@
 ~~~
 typedef struct
 {
-  uint32_t PA0:1;
-  uint32_t PA1:1;
-  uint32_t PA2:1;
-  uint32_t PA3:1;
-  uint32_t PA4:1;
-  uint32_t PA5:1;
-  uint32_t PA6:1;
-  uint32_t PA7:1;
-  uint32_t PA8:1;
-  uint32_t PA9:1;
-  uint32_t PA10:1;
-  uint32_t PA11:1;
-  uint32_t PA12:1;
-  uint32_t PA13:1;
-  uint32_t PA14:1;
-  uint32_t PA15:1;
+  uint32_t P0:1;
+  uint32_t P1:1;
+  uint32_t P2:1;
+  uint32_t P3:1;
+  uint32_t P4:1;
+  uint32_t P5:1;
+  uint32_t P6:1;
+  uint32_t P7:1;
+  uint32_t P8:1;
+  uint32_t P9:1;
+  uint32_t P10:1;
+  uint32_t P11:1;
+  uint32_t P12:1;
+  uint32_t P13:1;
+  uint32_t P14:1;
+  uint32_t P15:1;
 }GPIOx_Bits;
 
 #define GPIOA_Bits ((volatile GPIOx_Bits *) (&GPIOA->ODR))
 #define GPIOB_Bits ((volatile GPIOx_Bits *) (&GPIOB->ODR))
+#define GPIOC_Bits ((volatile GPIOx_Bits *) (&GPIOC->ODR))
 
 ~~~
 
@@ -37,12 +38,12 @@ main(void)
     Initialize_GPIO();
     while(1)
     {  
-        GPIOA_Bits->PA0 = 1;
-        GPIOB_Bits->PB15 = 1;
+        GPIOA_Bits->P0 = 1;
+        GPIOB_Bits->P15 = 1;
         HAL_Delay(500);
 
-        GPIOA_Bits->PA0 = 0;
-        GPIOB_Bits->PB15 = 0;
+        GPIOA_Bits->P0 = 0;
+        GPIOB_Bits->P15 = 0;
         HAL_Delay(500);
     } 
 }
