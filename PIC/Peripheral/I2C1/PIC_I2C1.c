@@ -29,6 +29,11 @@ void I2C1_Init(I2C1_Init_PORTTypedef I2C1_Init_PORT,uint8_t address,I2Cx_Mode mo
         
         case I2C_MODE_SLAVE:
             SSPSTAT = 0x00;                //Clear all flag
+            if(Speed==I2C_SPEED_STANDARD)
+                SSPSTAT |= (1<<7);         //Slew rate control disabled for standard speed mode
+            else if(Speed==I2C_SPEED_HIGH)
+                SSPSTAT &= ~(1<<7);        //Slew rate control enabled for high speed mode 
+
             SSPCON1 |= (0x06<<0);          //I2C slave mode 7bit                
             SSPCON2bits.SEN= 1;            //clock streching is enable
             SSPADD = address << 1;         //Set own address

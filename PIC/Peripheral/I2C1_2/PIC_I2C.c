@@ -9,7 +9,7 @@ I2Cx_Configuration I2C2_Config;
 
 int8_t I2C_Transmit(I2Cx_Module I2Cx,uint8_t address,uint8_t *pData,uint8_t size)
 {
-    int8_t result;
+    int8_t result = -1;
     
      switch(I2Cx)
     {
@@ -29,7 +29,7 @@ int8_t I2C_Transmit(I2Cx_Module I2Cx,uint8_t address,uint8_t *pData,uint8_t size
 
 int8_t I2C_Receive(I2Cx_Module I2Cx,uint8_t address,uint8_t *pData,uint8_t size)
 {
-    int8_t result;
+    int8_t result = -1;
     
     switch(I2Cx)
     {

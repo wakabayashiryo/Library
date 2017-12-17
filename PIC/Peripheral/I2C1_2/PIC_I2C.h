@@ -25,8 +25,7 @@ typedef enum
 typedef enum
 {
     I2C_SPEED_STANDARD,
-    I2C_SPEED_HIGH,
-    I2C_SPEED_NONE
+    I2C_SPEED_HIGH
 }I2Cx_Speed;
 
 typedef enum
