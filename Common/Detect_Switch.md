@@ -1,5 +1,7 @@
 # 組み込みマイコン用スイッチ検出アルゴリズム
 
+[ＰＩＣを使用した例](https://github.com/wakabayashiryo/PowerCTRL_MutingRelayUnit.X)
+
 > void Switch_CountHIGH(void)   
 
 スイッチが押されいる時間をカウントする   
