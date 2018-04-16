@@ -32,6 +32,19 @@ static const uint16_t baudtable[] = {
    21,      //57.6kbos
    10       //115.2kbps
 };
+
+#elif_XTAL_FREQ==160000000
+static const uint16_t baudtable[] = {
+   3332,    //300bps
+   832,    //1200bps
+   415,     //2400bps
+   103,     //9600bps
+   94,     //10417bps
+   51,     //19.2kbps
+   16,      //57.6kbos
+   7       //115.2kbps
+};
+
 #endif
 
 void UART_Init(UART_Init_PORTTypedef UART_Init_PORT,BAUDRATE_u brg) 
