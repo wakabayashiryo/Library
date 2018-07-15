@@ -33,8 +33,14 @@
 #define	MAIN_H
 
 #include <xc.h> // include processor files - each processor file is guarded.  
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <stdint.h>
 //#include "periphral header file"
 
+//Assign System Clock macro for delay
+#define _XTAL_FREQ 32000000
 
 // PIC16F1824 Configuration Bit Settings
 
