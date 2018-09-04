@@ -33,7 +33,7 @@ static const uint16_t baudtable[] = {
    10       //115.2kbps
 };
 
-#elif_XTAL_FREQ==160000000
+#elif _XTAL_FREQ==160000000
 static const uint16_t baudtable[] = {
    3332,    //300bps
    832,    //1200bps
