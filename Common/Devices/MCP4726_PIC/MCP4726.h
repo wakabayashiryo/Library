@@ -78,8 +78,9 @@ typedef union
     };
 }Config_Reg;
 
-void DAC_Initialize(void);
-int8_t DAC_WriteVoltage(uint16_t volue);
+void MCP4726_Init(void);
+
+int8_t MCP4726_Set_Voltage(uint16_t value);
 
 #ifdef	__cplusplus
 }

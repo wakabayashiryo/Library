@@ -44,8 +44,11 @@
 
 /* USER CODE BEGIN Includes */
 void RTC_Set_Calendar(RTC_HandleTypeDef *hrtc,RTC_DateTypeDef *sDate,RTC_TimeTypeDef *sTime);
+
 void RTC_Get_Calendar(RTC_HandleTypeDef *hrtc,RTC_DateTypeDef *sDate,RTC_TimeTypeDef *sTime);  
+
 const char* RTC_Get_WeekDay_Char(RTC_DateTypeDef *sDate);
+
 void RTC_Show_Calendar(RTC_HandleTypeDef *hrtc,RTC_DateTypeDef *sDate,RTC_TimeTypeDef *sTime);
 /* USER CODE END Includes */
 
