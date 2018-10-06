@@ -66,6 +66,24 @@ exp):UART_Get_Status(uin16t_t channenl);
     
 ---
 
+- ## Debug   
+    - ### To display the value in the function by debugging, activate serial output with "# define _DEBUG 1".
+    - ### Express error contents as return value
+    - example  
+~~~C
+    #define _DEBUG 1
+    
+    int hoge_function(uint32_t hoge)
+    {  
+#if _DEBUG 
+        Serial.print("hoge"); or printf("hoge");
+#endif
+    return 0;
+    }
+
+~~~
+----
+
 - ## Other Rules
 **Timer Prescaler and Communication speed must declear definition of value**   
 exp):Baudrate of UART
