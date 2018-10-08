@@ -1,6 +1,6 @@
 #include "RTC_Operation.h"
 
-const char *weekday_char[] = {
+const char * const weekday_char[] = {
   "Monday",
   "Tuesday",
   "Wednesday",

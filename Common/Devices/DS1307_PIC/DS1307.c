@@ -13,7 +13,7 @@ int8_t DS1307_Start(void)
 
     if(!(CheckClockHalt&0x80))return 0;
 
-    uint8_t senddata[2] = 
+    const uint8_t senddata[2] = 
     {
         0x00,       //first register pointer
         0x00        //Clear Clock Halt bit
@@ -23,7 +23,7 @@ int8_t DS1307_Start(void)
 
 int8_t DS1307_Stop(void)
 {
-    uint8_t senddata[2] = 
+    const uint8_t senddata[2] = 
     {
         0x00,       //first register pointer
         0x80        //Clear Clock Halt bit
