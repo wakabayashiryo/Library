@@ -37,6 +37,7 @@
         
 
 - ## How to use?
+    - ### sample code
     ~~~C
     #include "main.h"
 
@@ -75,8 +76,10 @@
     |:--:|:------|
     |PIC16F1938|None|
 
-- ## Other
-    ho nya ra ra.
+- ## History
+    |version  |date|contents |
+    |:-----:|:-------:|:----------------:|
+    |ver1.0 |20xx/1/1|added README for this library|
 
 - ## License information
     This software is released under the MIT License, see LICENSE

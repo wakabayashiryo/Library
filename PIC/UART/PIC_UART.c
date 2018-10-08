@@ -4,12 +4,6 @@ static uint8_t UART_Buffer[UART_BUFFER_SIZE];
 static uint8_t UART_Buffer_inptr;
 static uint8_t UART_Buffer_outptr;
 
-/*The Baudrate values can use only when FOSC(system clock) is 32MHz*/
-/* ----Condition-----
- * High Baud rate Select bit (BRGH) is 0
- * 16bit baud ratet generate bit (BRG16) is 1
- */
-
 #if _XTAL_FREQ==32000000
 static const uint16_t baudtable[] = {
    6666,    //300bps
