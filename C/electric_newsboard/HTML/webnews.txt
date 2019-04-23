@@ -1,0 +1,65 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<rss xmlns:blogChannel="http://backend.userland.com/blogChannelModule" version="2.0">
+<channel>
+<title>Yahoo!ニュース・トピックス - 国内</title>
+<link>http://headlines.yahoo.co.jp/hl?c=dom</link>
+<description>Yahoo! JAPANのニュース・トピックスで取り上げている最新の見出しを提供しています。</description>
+<language>ja</language>
+<pubDate>Fri, 27 Nov 2015 14:32:46 +0900</pubDate>
+<item>
+<title>菊地直子被告に逆転無罪判決</title>
+<link>http://news.yahoo.co.jp/pickup/6182252</link>
+<pubDate>Fri, 27 Nov 2015 13:44:42 +0900</pubDate>
+<enclosure length="133" url="http://i.yimg.jp/images/icon/photo.gif" type="image/gif"></enclosure>
+<guid isPermaLink="false">yahoo/news/topics/6182252</guid>
+</item>
+<item>
+<title>北日本大荒れ 帯広で積雪65cm</title>
+<link>http://news.yahoo.co.jp/pickup/6182244</link>
+<pubDate>Fri, 27 Nov 2015 12:48:22 +0900</pubDate>
+<enclosure length="133" url="http://i.yimg.jp/images/icon/photo.gif" type="image/gif"></enclosure>
+<guid isPermaLink="false">yahoo/news/topics/6182244</guid>
+</item>
+<item>
+<title>軽減税率 プリペイドカード案</title>
+<link>http://news.yahoo.co.jp/pickup/6182224</link>
+<pubDate>Fri, 27 Nov 2015 09:08:07 +0900</pubDate>
+<enclosure length="133" url="http://i.yimg.jp/images/icon/photo.gif" type="image/gif"></enclosure>
+<guid isPermaLink="false">yahoo/news/topics/6182224</guid>
+</item>
+<item>
+<title>通知カード完了 12月20日に</title>
+<link>http://news.yahoo.co.jp/pickup/6182202</link>
+<pubDate>Fri, 27 Nov 2015 01:23:58 +0900</pubDate>
+<enclosure length="133" url="http://i.yimg.jp/images/icon/photo.gif" type="image/gif"></enclosure>
+<guid isPermaLink="false">yahoo/news/topics/6182202</guid>
+</item>
+<item>
+<title>千葉の駐車場棟 10ｍ短い杭か</title>
+<link>http://news.yahoo.co.jp/pickup/6182219</link>
+<pubDate>Fri, 27 Nov 2015 08:27:28 +0900</pubDate>
+<guid isPermaLink="false">yahoo/news/topics/6182219</guid>
+</item>
+<item>
+<title>福島原発2号機 建屋解体へ</title>
+<link>http://news.yahoo.co.jp/pickup/6182193</link>
+<pubDate>Thu, 26 Nov 2015 22:18:29 +0900</pubDate>
+<enclosure length="133" url="http://i.yimg.jp/images/icon/photo.gif" type="image/gif"></enclosure>
+<guid isPermaLink="false">yahoo/news/topics/6182193</guid>
+</item>
+<item>
+<title>重加算税 悪質なら最高50%も</title>
+<link>http://news.yahoo.co.jp/pickup/6182205</link>
+<pubDate>Fri, 27 Nov 2015 03:34:20 +0900</pubDate>
+<enclosure length="133" url="http://i.yimg.jp/images/icon/photo.gif" type="image/gif"></enclosure>
+<guid isPermaLink="false">yahoo/news/topics/6182205</guid>
+</item>
+<item>
+<title>菅氏と谷垣氏 関係ぎくしゃく</title>
+<link>http://news.yahoo.co.jp/pickup/6182191</link>
+<pubDate>Thu, 26 Nov 2015 22:16:16 +0900</pubDate>
+<enclosure length="133" url="http://i.yimg.jp/images/icon/photo.gif" type="image/gif"></enclosure>
+<guid isPermaLink="false">yahoo/news/topics/6182191</guid>
+</item>
+</channel>
+</rss>
